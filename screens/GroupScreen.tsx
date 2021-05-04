@@ -4,10 +4,11 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   Image,
+  Pressable,
   FlatList,
+  Alert,
 } from "react-native";
 
 import { RootStackParamList, Group, GroupItem } from "../types";
@@ -17,6 +18,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { screenWidth } from "../constants/Layout";
 import SwipeButton from "rn-swipe-button";
+import { Icon } from "react-native-elements";
 
 const mockGroupItems = [
   {
@@ -58,14 +60,34 @@ const renderMemberPreview = (memberProfilePicture: string) => {
 };
 
 const renderGroupItem = ({ item }: { item: GroupItem }) => {
-  return <View style={styles.groupItemContainer}></View>;
+  return (
+    <View style={styles.groupItemContainer}>
+      <Icon
+        type="material-community"
+        name={item.isFavourited ? "star" : "star-outline"}
+        color="grey"
+        size={32}
+        style={styles.groupItemFavouriteStar}
+      />
+
+      <Image source={{ uri: item.picture }} style={styles.groupItemPicture} />
+
+      <View style={styles.groupItemContentContainer}>
+        <Text>{item.title}</Text>
+
+        <Text>{`${item.brand} - ${item.size}`}</Text>
+
+        <Text>{item.ownerName}</Text>
+      </View>
+    </View>
+  );
 };
 
 export default function GroupScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "Group">) {
-  const route = useRoute(); // route.params.groupId when it works
-  const groupId = "aaaa"; // TODO - for dev only
+  const route = useRoute();
+  const groupId = route?.params?.groupId
   const groups = useSelector((state: RootState) => state.groups);
 
   const group = groups.find((item) => item.id === groupId);
@@ -73,7 +95,19 @@ export default function GroupScreen({
   const groupItems = mockGroupItems;
 
   const ListHeaderComponent = () => (
-    <>
+    <View style={styles.listHeaderContainer}>
+
+    <View style={styles.topControlsContainer}>
+    <Pressable onPress={() => navigation.goBack()}>
+      <Icon 
+      type='material-community'
+      name='arrow-left'
+      size={32}
+      color="grey"
+      />
+      </Pressable>
+    </View>
+
       <Image
         source={{ uri: group?.headerPicture }}
         style={styles.imageHeader}
@@ -94,14 +128,14 @@ export default function GroupScreen({
       </View>
 
       <Text style={styles.inYourGroupLabel}>IN YOUR GROUP</Text>
-    </>
+    </View>
   );
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={mockGroupItems}
-        extraData={mockGroupItems}
+        data={groupItems}
+        extraData={groupItems}
         ListHeaderComponent={ListHeaderComponent}
         renderItem={renderGroupItem}
         numColumns={2}
@@ -111,6 +145,31 @@ export default function GroupScreen({
 }
 
 const styles = StyleSheet.create({
+  topControlsContainer: {
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    paddingBottom: 10
+  },
+  groupItemFavouriteStar: {},
+  groupItemContentContainer: {
+    width: "90%",
+  },
+  listHeaderContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  groupItemPicture: {
+    width: "90%",
+    height: screenWidth * 0.45 * 1.6,
+  },
+  groupItemContainer: {
+    width: "50%",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 35,
+  },
   itemsContainer: {
     flex: 1,
   },
