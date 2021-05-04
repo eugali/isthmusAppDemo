@@ -9,6 +9,18 @@ const mockState = [
   {
     id: '1234',
     name: 'Sustainable Fashion'
+  },
+  {
+    id: '6789',
+    name: 'Outdoor Enthusiasts'
+  },
+  {
+    id: 'abcd',
+    name: 'Parent Communities'
+  },
+  {
+    id: 'efgh',
+    name: 'Local to you'
   }
 ] as GroupCategory[]
 

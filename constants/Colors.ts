@@ -17,3 +17,5 @@ export default {
     tabIconSelected: tintColorDark,
   },
 };
+
+export const mainBackgroundColor = '#eee'

@@ -22,6 +22,7 @@ export type GroupMember = {
 }
 
 export type Group = {
+  id: string,
   headerPicture: string,
   title: string,
   listingsAmount: number,
