@@ -52,3 +52,8 @@ export type GroupItem = {
   isFavourited: boolean;
   ownerName: string;
 };
+
+export enum HTTPMethods {
+  GET = 'get',
+  POST = 'post'
+} 

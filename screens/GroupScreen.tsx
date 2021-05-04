@@ -87,7 +87,7 @@ export default function GroupScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "Group">) {
   const route = useRoute();
-  const groupId = route?.params?.groupId
+  const groupId = route?.params?.groupId;
   const groups = useSelector((state: RootState) => state.groups);
 
   const group = groups.find((item) => item.id === groupId);
@@ -96,17 +96,16 @@ export default function GroupScreen({
 
   const ListHeaderComponent = () => (
     <View style={styles.listHeaderContainer}>
-
-    <View style={styles.topControlsContainer}>
-    <Pressable onPress={() => navigation.goBack()}>
-      <Icon 
-      type='material-community'
-      name='arrow-left'
-      size={32}
-      color="grey"
-      />
-      </Pressable>
-    </View>
+      <View style={styles.topControlsContainer}>
+        <Pressable onPress={() => navigation.goBack()}>
+          <Icon
+            type="material-community"
+            name="arrow-left"
+            size={32}
+            color="grey"
+          />
+        </Pressable>
+      </View>
 
       <Image
         source={{ uri: group?.headerPicture }}
@@ -146,11 +145,11 @@ export default function GroupScreen({
 
 const styles = StyleSheet.create({
   topControlsContainer: {
-    width: '100%',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    width: "100%",
+    alignItems: "flex-start",
+    justifyContent: "center",
     paddingHorizontal: 20,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   groupItemFavouriteStar: {},
   groupItemContentContainer: {
