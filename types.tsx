@@ -54,6 +54,25 @@ export type GroupItem = {
 };
 
 export enum HTTPMethods {
-  GET = 'get',
-  POST = 'post'
-} 
+  GET = "get",
+  POST = "post",
+  PATCH = "patch",
+  PUT = "put",
+}
+
+export type SignInPayload = {
+  username: string;
+  password: string;
+};
+
+export type GetGroupParams = {
+  groupId: string;
+};
+
+export type ListItemInGroupParams = {
+  item: GroupItem;
+};
+
+export type ToggleFavouriteInItemParams = {
+  itemId: string;
+};
