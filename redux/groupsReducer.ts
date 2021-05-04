@@ -1,6 +1,32 @@
 import { GroupAccess, GroupMember } from "../types";
 import { ReduxAction, Group } from "../types";
 
+// actions
+
+const ADD_GROUP = "ADD_GROUP";
+const SET_GROUPS = "SET_GROUPS"
+
+// action creators
+
+export const addGroup = (group: Group) => ({
+  type: ADD_GROUP,
+  payload: group,
+});
+
+export const setGroups = (groups:Group[]) => ({
+  type: SET_GROUPS,
+  payload: groups
+})
+
+export default function groupsReducer(state = [], action: ReduxAction) {
+  switch (action.type) {
+    case SET_GROUPS: 
+      return [...action.payload]
+    default:
+      return state;
+  }
+}
+
 // mock state
 
 const mockState = [
@@ -181,22 +207,3 @@ const mockState = [
     ] as GroupMember[],
   },
 ] as Group[];
-
-// actions
-
-const ADD_GROUP = "ADD_GROUP";
-
-// action creators
-
-const addGroup = (group: Group) => ({
-  type: ADD_GROUP,
-  payload: group,
-});
-
-// TODO - REMOVE MOCKSTATE WHEN YOU LINK THIS WITH THE BACKEND
-export default function groupsReducer(state = mockState, action: ReduxAction) {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}

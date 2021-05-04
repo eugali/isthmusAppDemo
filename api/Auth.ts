@@ -1,8 +1,7 @@
 import { HTTPMethods, SignInPayload } from "../types";
 import API from "./index";
 
-export default class Auth {
-  static signIn(params: SignInPayload) {
-    return API.request(HTTPMethods.POST, "api/auth/login", params);
-  }
+const signIn = (params: SignInPayload) => {
+  return API.request(HTTPMethods.POST, "v1/auth/login", params);
 }
+

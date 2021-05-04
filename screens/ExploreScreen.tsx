@@ -1,5 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import * as React from "react";
+import { useEffect} from 'react'
 import {
   StyleSheet,
   View,
@@ -10,6 +11,10 @@ import {
   Alert,
 } from "react-native";
 
+import {useDispatch } from 'react-redux'
+
+import {setGroups} from '../redux/groupsReducer'
+
 import { Group, GroupCategory, RootStackParamList } from "../types";
 
 import ExploreGroupListItem from "../components/ExploreGroupListItem";
@@ -17,6 +22,8 @@ import ExploreGroupListItem from "../components/ExploreGroupListItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { mainBackgroundColor } from "../constants/Colors";
+
+import {getAllGroups} from '../api/Group'
 
 const renderGroupItem = ({ item }: { item: Group }) => {
   return <ExploreGroupListItem group={item} />;
@@ -69,6 +76,14 @@ export default function ExploreScreen({
 }: StackScreenProps<RootStackParamList, "Explore">) {
   const groups = useSelector((state: RootState) => state.groups);
   const categories = useSelector((state: RootState) => state.groupCategories);
+
+  const dispatch = useDispatch()
+
+  const setGroupsCallback = (groups: Group[]) => dispatch(setGroups(groups))
+
+  useEffect(() => {
+    getAllGroups(setGroupsCallback)
+  }, [])
 
   return (
     <SafeAreaView style={styles.container}>

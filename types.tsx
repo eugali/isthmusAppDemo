@@ -45,6 +45,7 @@ export type GroupCategory = {
 };
 
 export type GroupItem = {
+  id: string,
   picture: string;
   title: string;
   brand: string;
