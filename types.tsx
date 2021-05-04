@@ -38,7 +38,7 @@ export enum GroupAccess {
   PUBLIC = 'public'
 }
 
-export type GroupCategories = {
+export type GroupCategory = {
   name: string,
   id: string
 }

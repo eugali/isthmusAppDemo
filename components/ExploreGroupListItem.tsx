@@ -12,7 +12,7 @@ export default function ExploreGroupListItem({
 
   return (
     <View style={styles.container}>
-      <Text>group list item</Text>
+      
     </View>
   );
 }
@@ -20,7 +20,7 @@ export default function ExploreGroupListItem({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,

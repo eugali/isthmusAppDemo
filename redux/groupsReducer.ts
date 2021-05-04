@@ -6,12 +6,6 @@ import {
 
 // mock state
 
-const groupCategories = {
-  'fgdggsdgd-gdsgfdsg-jhgfhjgf': {
-    name: 'Sustainable Fashion'
-  }
-}
-
 const mockState = [
   {
     headerPicture: '',
@@ -20,7 +14,7 @@ const mockState = [
     discussionsAmount: 6434,
     location: 'United States',
     membersAmount: 522,
-    categoryId: 'fgdggsdgd-gdsgfdsg-jhgfhjgf',
+    categoryId: '1234',
     groupAccess: GroupAccess.PRIVATE,
     firstTenMembers: []
   }
