@@ -1,15 +1,15 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers } from "redux";
 
-import groups from './groupsReducer'
-import groupCategories from './groupCategoriesReducer'
+import groups from "./groupsReducer";
+import groupCategories from "./groupCategoriesReducer";
 
 const rootReducer = combineReducers({
   groups,
-  groupCategories
-})
+  groupCategories,
+});
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer);
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
 
-export default store
+export default store;

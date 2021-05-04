@@ -6,40 +6,49 @@
 export type RootStackParamList = {
   Explore: undefined;
   Group: {
-    groupId: string
-  }
+    groupId: string;
+  };
 };
 
 export type ReduxAction = {
-  type: string,
-  payload: object
-}
+  type: string;
+  payload: object;
+};
 
 export type GroupMember = {
-  firstName: string,
-  lastName: string,
-  profilePicture: string
-}
+  firstName: string;
+  lastName: string;
+  profilePicture: string;
+};
 
 export type Group = {
-  id: string,
-  headerPicture: string,
-  title: string,
-  listingsAmount: number,
-  discussionsAmount: number,
-  location: string,
-  membersAmount: number,
-  categoryId: string,
-  groupAccess: GroupAccess,
-  firstTenMembers: GroupMember[]
-}
+  id: string;
+  headerPicture: string;
+  title: string;
+  listingsAmount: number;
+  discussionsAmount: number;
+  location: string;
+  membersAmount: number;
+  categoryId: string;
+  groupAccess: GroupAccess;
+  firstTenMembers: GroupMember[];
+};
 
 export enum GroupAccess {
-  PRIVATE = 'private',
-  PUBLIC = 'public'
+  PRIVATE = "private",
+  PUBLIC = "public",
 }
 
 export type GroupCategory = {
-  name: string,
-  id: string
-}
+  name: string;
+  id: string;
+};
+
+export type GroupItem = {
+  picture: string;
+  title: string;
+  brand: string;
+  size: string;
+  isFavourited: boolean;
+  ownerName: string;
+};
